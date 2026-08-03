@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Wrong Turn | REV NATION JAIPUR</title>
+
+<!-- Premium Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Poppins:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --void: #0a0a0b; --surface: #1a1a1d; 
+  --line-strong: rgba(242,241,238,0.16);
+  --ink: #ffffff; --ink-dim: #a0a0a5;
+  --accent: #c17f3e; --accent-bright: #e0a565;
+  --ignition: #e8462a; --ignition-bright: #ff7350;
+  --display: 'Montserrat', sans-serif; --body: 'Poppins', sans-serif; --mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--void); color: var(--ink); font-family: var(--body); height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; }
+a { text-decoration: none; }
+
+/* Cinematic Film Grain */
+body::after { content: ""; position: fixed; inset: 0; z-index: 9999; pointer-events: none; background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.04"/%3E%3C/svg%3E'); opacity: 0.8; }
+
+/* Giant Parallax Background */
+.bg-404 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--display); font-weight: 900; font-size: 45vw; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.03); z-index: 0; pointer-events: none; user-select: none; white-space: nowrap; }
+
+/* Foreground Content */
+.content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; animation: fadeUp 1s var(--ease) forwards; opacity: 0; transform: translateY(20px); }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ignition-bright); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.eyebrow::before, .eyebrow::after { content: ""; width: 24px; height: 1px; background: var(--ignition-bright); }
+
+h1 { font-family: var(--display); font-size: clamp(32px, 5vw, 64px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+p { color: var(--ink-dim); font-size: clamp(16px, 2vw, 18px); font-weight: 300; max-width: 400px; margin-bottom: 48px; }
+
+/* Liquid Button */
+.btn-liquid { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 40px; border-radius: 100px; font-family: var(--body); font-weight: 500; font-size: 14px; letter-spacing: 0.02em; border: 1px solid var(--accent); background: rgba(193,127,62,0.05); overflow: hidden; isolation: isolate; cursor: pointer; }
+.goo-layer { position: absolute; inset: -50%; z-index: 0; pointer-events: none; filter: url(#liquid-goo); }
+.blob { position: absolute; bottom: -20px; width: 45%; height: 140%; border-radius: 50%; background: var(--accent); transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.7,0,0.3,1); }
+.btn-liquid:hover .blob { transform: translateY(0); }
+.blob.b1 { left: -10%; transition-delay: 0s; } .blob.b2 { left: 20%; transition-delay: 0.03s; } .blob.b3 { left: 50%; transition-delay: 0.06s; } .blob.b4 { left: 80%; transition-delay: 0.09s; }
+.btn-liquid .txt { position: relative; z-index: 2; color: var(--accent-bright); transition: color 0.3s ease; display: flex; align-items: center; gap: 6px; }
+.btn-liquid:hover .txt { color: var(--void); }
+.btn-liquid .arrow { transition: transform 0.3s var(--ease); font-family: var(--mono); }
+.btn-liquid:hover .arrow { transform: translateX(-4px); }
+
+/* Logo Lockup */
+.logo { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); font-family: var(--display); font-weight: 800; font-size: 16px; color: var(--ink); text-transform: uppercase; letter-spacing: 2px; z-index: 10; opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="logo">REV NATION</a>
+
+<div class="bg-404" id="bgText">404</div>
+
+<div class="content">
+  <div class="eyebrow">Lost Traction</div>
+  <h1>Dead End.</h1>
+  <p>The build you are looking for doesn't exist or has been moved from the studio.</p>
+  
+  <a href="index.html" class="btn-liquid">
+    <span class="goo-layer"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></span>
+    <span class="txt"><span class="arrow">←</span> Return to Studio</span>
+  </a>
+</div>
+
+<svg width="0" height="0" style="position:absolute; pointer-events:none;">
+  <defs>
+    <filter id="liquid-goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"/>
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+  </defs>
+</svg>
+
+<script>
+  // Premium Mouse Parallax for the giant 404 text
+  const bg = document.getElementById('bgText');
+  window.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth / 2 - e.pageX) * 0.05;
+    const y = (window.innerHeight / 2 - e.pageY) * 0.05;
+    bg.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+  });
+</script>
+</body>
+</html>

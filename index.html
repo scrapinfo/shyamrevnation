@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REV NATION JAIPUR | Custom Builds & Studio</title>
+<meta name="description" content="Custom modifications, precision PPF, ceramic coatings and studio-grade detailing in Jaipur.">
+
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css">
+
+<style>
+/* ============================================================
+   REV NATION - UNCOMPROMISED FRONT-END (V10)
+   ============================================================ */
+:root {
+  --void: #030303; 
+  --surface: #0a0a0a; 
+  --surface-raised: #141414;
+  --line: rgba(255, 255, 255, 0.08); 
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --ink: #ffffff; 
+  --ink-dim: rgba(255, 255, 255, 0.65); 
+  --ink-faint: rgba(255, 255, 255, 0.4);
+  --accent: #e8462a; /* Studio Orange */
+  
+  --display: 'Clash Display', sans-serif;
+  --body: 'General Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; } 
+html { scroll-behavior: auto; background: var(--void); }
+body { background: var(--void); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+img, video { display: block; max-width: 100%; }
+a, button, select, input, textarea { text-decoration: none !important; outline: none; cursor: pointer; color: inherit; }
+button { font-family: inherit; background: none; border: none; }
+ul { list-style: none; }
+::selection { background: var(--ink); color: var(--void); }
+
+/* Cinematic Film Grain */
+body::after { content: ""; position: fixed; inset: 0; z-index: 9999; pointer-events: none; background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E'); opacity: 0.9; }
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Layout */
+.container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 0 5vw; }
+section { position: relative; }
+.pad { padding: 160px 0; }
+@media(max-width: 900px) { .pad { padding: 100px 0; } }
+
+/* Fade Triggers */
+.cinema-drop { opacity: 0; transform: translateY(40px); will-change: transform, opacity; }
+
+/* Typography */
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--ink-faint); }
+.eyebrow.accent { color: var(--accent); }
+.eyebrow.accent::before { background: var(--accent); }
+
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; }
+h1 { font-size: clamp(48px, 8vw, 110px); letter-spacing: -0.03em; font-weight: 700; }
+h2 { font-size: clamp(32px, 5vw, 64px); }
+
+.section-head { max-width: 720px; margin-bottom: 64px; }
+.section-head p { color: var(--ink-dim); margin-top: 24px; font-size: clamp(16px, 2vw, 18px); max-width: 600px; font-weight: 400; }
+
+/* Arrows */
+.arrow { display: inline-block; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s; font-family: var(--mono); font-size: 14px; margin-left: 8px; font-weight: 400; }
+.arrow.hidden { opacity: 0; transform: translateX(-10px) scale(0.8); }
+a:hover .arrow.hidden, button:hover .arrow.hidden { opacity: 1; transform: translateX(0) scale(1); }
+a:hover .arrow:not(.hidden), button:hover .arrow:not(.hidden) { transform: translateX(6px); }
+
+/* Buttons & Liquid Effect */
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 16px 36px; border-radius: 100px; font-family: var(--body); font-weight: 500; font-size: 15px; letter-spacing: 0.02em; border: 1px solid var(--line-strong); transition: all 0.4s ease; color: var(--ink); overflow: hidden; }
+.magnetic { will-change: transform; }
+.btn-ghost { background: transparent; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.btn-ghost:hover { background: var(--ink); color: var(--void); border-color: var(--ink); }
+
+.btn-liquid { border-color: var(--accent); background: rgba(232,70,42,0.05); isolation: isolate; }
+.goo-layer { position: absolute; inset: -50%; z-index: 0; pointer-events: none; filter: url(#liquid-goo); }
+.blob { position: absolute; bottom: -20px; width: 45%; height: 140%; border-radius: 50%; background: var(--accent); transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.7,0,0.2,1); }
+.btn-liquid:hover .blob { transform: translateY(0); }
+.blob.b1 { left: -10%; transition-delay: 0s; } .blob.b2 { left: 20%; transition-delay: 0.04s; } .blob.b3 { left: 50%; transition-delay: 0.08s; } .blob.b4 { left: 80%; transition-delay: 0.12s; }
+.btn-liquid .txt { position: relative; z-index: 2; color: var(--accent); transition: color 0.3s ease; display: flex; align-items: center; }
+.btn-liquid:hover .txt { color: var(--ink); }
+
+/* Premium WhatsApp Float */
+.whatsapp-float { position: fixed; bottom: 40px; right: 5vw; z-index: 90; width: 64px; height: 64px; border-radius: 50%; background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; color: var(--ink); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+.whatsapp-float svg { width: 32px; height: 32px; fill: currentColor; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.whatsapp-float:hover { background: #25D366; border-color: #25D366; color: #ffffff; transform: translateY(-8px) scale(1.05); box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4); }
+.whatsapp-float:hover svg { transform: scale(1.1); }
+@media(max-width: 900px) { .whatsapp-float { width: 56px; height: 56px; bottom: 24px; right: 24px; } .whatsapp-float svg { width: 28px; height: 28px; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute; pointer-events:none;">
+<defs>
+<filter id="liquid-goo">
+<feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
+<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"/>
+<feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+</filter>
+</defs>
+</svg>
+<style>
+/* ============================================================
+   PRELOADER (GARAGE DOOR SPLIT)
+   ============================================================ */
+#preloader { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.pl-curtain { position: absolute; left: 0; width: 100%; height: 50.5vh; background: var(--void); transition: transform 1.2s cubic-bezier(0.7, 0, 0.2, 1); z-index: 1; border-bottom: 1px solid var(--line); }
+.pl-curtain.pl-top { top: 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.pl-curtain.pl-bottom { bottom: 0; border-bottom: none; border-top: 1px solid rgba(255,255,255,0.04); }
+.pl-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 24px; transition: opacity 0.4s ease, transform 0.4s ease; }
+.pl-brand { font-family: var(--display); font-weight: 700; font-size: 16px; letter-spacing: 0.3em; color: var(--ink); text-transform: uppercase; }
+.pl-counter { display: flex; align-items: flex-end; gap: 8px; font-family: var(--mono); color: var(--ink); }
+.pl-counter .num { font-size: 56px; font-weight: 400; line-height: 0.8; letter-spacing: -0.05em; }
+.pl-counter .unit { font-size: 14px; font-weight: 400; letter-spacing: 0.1em; padding-bottom: 4px; color: var(--ink-faint); }
+.pl-bar-wrap { width: 240px; height: 1px; background: var(--line-strong); overflow: hidden; }
+.pl-bar { height: 100%; width: 0%; background: var(--ink); transition: width 0.1s linear; }
+
+#preloader.done .pl-top { transform: translateY(-100%); }
+#preloader.done .pl-bottom { transform: translateY(100%); }
+#preloader.done .pl-content { opacity: 0; transform: scale(0.95); }
+
+/* ============================================================
+   NAVBAR & WALKING LINE HOVER
+   ============================================================ */
+header { position: fixed; top: 2vw; left: 5vw; width: 90vw; max-width: 1500px; z-index: 100; padding: 16px 32px; border-radius: 100px; background: rgba(5, 5, 5, 0.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
+.header-logo { font-family: var(--display); font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 10px; color: var(--ink); text-transform: uppercase; letter-spacing: 0.1em; }
+.header-logo .mark { width: 22px; height: 22px; flex-shrink: 0; }
+.header-links { display: flex; gap: 48px; position: absolute; left: 50%; transform: translateX(-50%); }
+
+/* The Walking Line Effect */
+.header-links a { font-family: var(--body); font-size: 14px; font-weight: 400; color: var(--ink-dim); position: relative; padding-bottom: 4px; transition: color 0.3s; }
+.header-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1.5px; background: var(--ink); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.header-links a:hover { color: var(--ink); }
+.header-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.header-actions { display: flex; align-items: center; gap: 16px; }
+
+/* The Mobile Arrow Trigger */
+.menu-trigger { display: none; width: 32px; height: 32px; position: relative; z-index: 101; cursor: pointer; align-items: center; justify-content: center; }
+.menu-trigger span { position: absolute; right: 4px; height: 1.5px; background: var(--ink); transition: all 0.4s cubic-bezier(0.7,0,0.3,1); border-radius: 2px; }
+.menu-trigger span:nth-child(1) { top: 10px; width: 24px; }
+.menu-trigger span:nth-child(2) { top: 16px; width: 24px; }
+.menu-trigger span:nth-child(3) { top: 22px; width: 24px; }
+.menu-trigger.open span:nth-child(1) { transform: translate(-4px, 4px) rotate(-45deg); width: 12px; }
+.menu-trigger.open span:nth-child(2) { width: 24px; }
+.menu-trigger.open span:nth-child(3) { transform: translate(-4px, -4px) rotate(45deg); width: 12px; }
+
+#mobile-drawer { position: fixed; top: 0; right: -100%; width: 100%; max-width: 440px; height: 100vh; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(32px); z-index: 99; padding: 140px 10vw 40px; display: flex; flex-direction: column; gap: 40px; transition: right 0.7s cubic-bezier(0.16, 1, 0.3, 1); border-left: 1px solid var(--line-strong); }
+#mobile-drawer.open { right: 0; }
+#mobile-drawer a { font-size: 32px; color: var(--ink-dim); font-family: var(--display); font-weight: 500; display: flex; align-items: center; justify-content: space-between; transition: color 0.3s; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+#mobile-drawer a:hover { color: var(--ink); }
+#mobile-drawer a .arrow { font-size: 24px; opacity: 0; transform: translateX(-10px); transition: all 0.4s cubic-bezier(0.16,1,.3,1); }
+#mobile-drawer a:hover .arrow { opacity: 1; transform: translateX(0); }
+body.menu-open { overflow: hidden; }
+
+@media(max-width: 900px) { 
+  .header-links, .header-actions .btn { display: none !important; } 
+  header { top: 16px; left: 24px; width: calc(100% - 48px); padding: 12px 24px; background: rgba(10, 10, 10, 0.85); justify-content: space-between; }
+  .menu-trigger { display: flex !important; } 
+}
+
+/* ============================================================
+   HERO SECTION & TOTAL CINEMATIC TAKEOVER
+   ============================================================ */
+#hero { height: 100vh; min-height: 700px; position: relative; overflow: hidden; background: var(--void); }
+.hero-media { position: absolute; inset: 0; filter: contrast(1.1); } 
+.hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 1s; }
+
+/* The Scrim */
+.hero-scrim { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(3,3,3,0) 0%, rgba(3,3,3,0.5) 62%, rgba(3,3,3,0.95) 100%), linear-gradient(180deg, rgba(3,3,3,0.3) 0%, rgba(3,3,3,0) 30%, rgba(3,3,3,0.9) 85%, var(--void) 100%); transition: opacity 1.2s cubic-bezier(0.16,1,.3,1); pointer-events: none; }
+
+/* The Content */
+.hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 12vh; transition: transform 1.2s cubic-bezier(0.16,1,.3,1), opacity 1.2s cubic-bezier(0.16,1,.3,1); transform-origin: bottom left; }
+.hero h1 .line { display: block; overflow: hidden; padding-bottom: 8px; }
+.hero h1 .line span { display: inline-block; transform: translateY(105%); transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.hero.revealed h1 .line:nth-child(1) span { transition-delay: 0.1s; }
+.hero.revealed h1 .line:nth-child(2) span { transition-delay: 0.25s; }
+.hero.revealed h1 .line span { transform: translateY(0); }
+.hero-content p.sub { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16,1,.3,1) 0.4s; }
+.hero.revealed p.sub { opacity: 1; transform: translateY(0); }
+.hero-actions { margin-top: 48px; display: flex; gap: 20px; flex-wrap: wrap; opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.16,1,.3,1) 0.55s; }
+.hero.revealed .hero-actions { opacity: 1; transform: translateY(0); }
+
+/* --- THE FULL CINEMATIC VANISH (ONLY TRIGGERS AT TOP OF PAGE) --- */
+body.ui-minimized header { opacity: 0; visibility: hidden; transform: translateY(-20px); pointer-events: none; }
+body.ui-minimized .hero-content { opacity: 0; visibility: hidden; transform: translateY(40px); pointer-events: none; }
+body.ui-minimized .hero-scrim { opacity: 0; } /* Text, Buttons, Scrim all gone. Just raw video. */
+</style>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/917300049430" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- PRELOADER -->
+<div id="preloader" role="status" aria-label="Loading Studio">
+  <div class="pl-curtain pl-top"></div>
+  <div class="pl-curtain pl-bottom"></div>
+  <div class="pl-content">
+    <div class="pl-brand">REV NATION</div>
+    <div class="pl-counter"><span class="num" id="plPct">0</span><span class="unit">% LOADED</span></div>
+    <div class="pl-bar-wrap"><div class="pl-bar" id="plBar"></div></div>
+  </div>
+</div>
+
+<header id="siteHeader">
+<div class="header-logo">
+<span class="mark"><svg viewBox="0 0 40 40" fill="none"><path d="M6 30 A16 16 0 0 1 34 30" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="square"/><path d="M6 30 A16 16 0 0 1 21 14.4" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="square"/><line x1="20" y1="30" x2="27.5" y2="16" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="square"/></svg></span>
+REV NATION
+</div>
+<nav class="header-links">
+<a href="#services">What We Do</a>
+<a href="#process">The Process</a>
+<a href="#builds">Studio Log</a>
+</nav>
+<div class="header-actions">
+<a href="#booking" class="btn btn-ghost magnetic">Initiate Project <span class="arrow hidden">→</span></a>
+<button class="menu-trigger" id="menuTrigger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</div>
+</header>
+
+<div id="mobile-drawer">
+<a href="#services">What We Do <span class="arrow">→</span></a>
+<a href="#process">The Process <span class="arrow">→</span></a>
+<a href="#builds">Studio Log <span class="arrow">→</span></a>
+<a href="#booking" style="color:var(--ink); border-color: var(--ink-faint);">Initiate Project <span class="arrow">→</span></a>
+</div>
+
+<main>
+<section id="hero">
+<div class="hero-media"><video autoplay muted loop playsinline poster="assets/hero-poster.jpg" id="heroVideo"><source src="assets/hero-reveal.mp4" type="video/mp4"></video></div>
+<div class="hero-scrim"></div>
+<div class="container hero-content">
+<div class="eyebrow accent">Jaipur Custom Builds</div>
+<h1>
+<span class="line"><span>One studio.</span></span>
+<span class="line"><span>Every layer.</span></span>
+</h1>
+<p class="sub">From wraps and wheels to optically clear film and ceramic gloss — each service is engineered to work together.</p>
+<div class="hero-actions">
+<a href="#services" class="btn btn-ghost magnetic">View Services <span class="arrow">→</span></a>
+<a href="#booking" class="btn btn-liquid magnetic">
+  <span class="goo-layer"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></span>
+  <span class="txt">Book Inspection <span class="arrow hidden">→</span></span>
+</a>
+</div>
+</div>
+</section>
+<style>
+/* ============================================================
+   UNIVERSAL HORIZONTAL SCROLL ENGINE (PERFECTED PROPORTIONS)
+   ============================================================ */
+.h-scroll-section { overflow: hidden; background: var(--void); padding: 160px 0; position: relative; border-bottom: 1px solid var(--line); }
+.h-scroll-layout { display: flex; flex-direction: column; gap: 80px; }
+.h-scroll-header { max-width: 720px; padding: 0 5vw; margin: 0; }
+
+/* Center alignment container for desktop and mobile */
+.h-scroll-viewport { width: 100vw; overflow-x: auto; padding-left: 50vw; padding-right: 50vw; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.h-scroll-viewport::-webkit-scrollbar { display: none; }
+.h-scroll-track { display: flex; gap: 32px; width: max-content; padding-bottom: 40px; will-change: transform; margin-left: -200px; /* Offset by half the card width to perfectly center the first card */ }
+
+/* The Perfected Luxury Card: 400x560 */
+.h-card { width: 400px; height: 560px; border-radius: 16px; overflow: hidden; position: relative; background: var(--surface); border: 1px solid var(--line); scroll-snap-align: center; flex-shrink: 0; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; cursor: pointer; transition: border-color 0.4s; }
+.h-card:hover { border-color: var(--ink-faint); }
+.h-card-media { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--surface-raised); overflow: hidden; }
+.h-card-media video, .h-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s; filter: grayscale(100%) contrast(1.1); }
+.h-card:hover .h-card-media video, .h-card:hover .h-card-media img { transform: scale(1.05); filter: grayscale(0%) contrast(1); }
+
+.h-card-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,3,3,0) 0%, rgba(3,3,3,0.3) 40%, rgba(3,3,3,0.95) 100%); pointer-events: none; z-index: 1; transition: opacity 0.4s; }
+.h-card:hover .h-card-scrim { opacity: 0.8; }
+.h-card-body { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; z-index: 2; display: flex; flex-direction: column; }
+.h-card-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--void); background: var(--ink); padding: 8px 16px; border-radius: 100px; width: max-content; margin-bottom: 24px; transition: transform 0.4s; font-weight: 500; }
+.h-card h4 { font-family: var(--display); font-size: 26px; color: var(--ink); margin-bottom: 12px; line-height: 1.1; display: flex; justify-content: space-between; align-items: flex-end;}
+.h-card p { font-size: 15px; color: var(--ink-dim); font-weight: 400; line-height: 1.6; }
+.h-card-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); background: rgba(3,3,3,0.4); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); font-family: var(--mono); font-size: 14px; }
+.h-card:hover .h-card-arrow { background: var(--ink); color: var(--void); border-color: var(--ink); transform: scale(1.1) translateX(4px); }
+
+/* Authority Marquee */
+.marquee { overflow: hidden; border-bottom: 1px solid var(--line); background: var(--void); padding: 32px 0; }
+.marquee-track { display: flex; gap: 120px; width: max-content; animation: marquee-scroll 35s linear infinite; }
+.marquee-track span { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: 0.2em; color: var(--ink-faint); text-transform: uppercase; white-space: nowrap; }
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Authority Grid */
+#authority { background: var(--void); border-bottom: 1px solid var(--line); }
+.authority-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.authority-left h2 { font-family: var(--display); font-size: clamp(32px, 3.5vw, 56px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin-top: 24px; color: var(--ink); }
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 40px; border-left: 1px solid var(--line); padding-left: 80px; }
+.stat { display: flex; flex-direction: column; position: relative; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.stat:nth-child(n+3) { border-bottom: none; padding-bottom: 0; } 
+.stat-num { font-family: var(--display); font-size: clamp(48px, 5vw, 88px); font-weight: 700; display: flex; align-items: flex-end; gap: 4px; line-height: 0.9; color: var(--ink); letter-spacing: -0.04em; }
+.odo { display: inline-flex; overflow: hidden;}
+.odo-digit { display: inline-block; height: 1em; overflow: hidden; position: relative; width: 0.65em; vertical-align: top; }
+.odo-strip { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; }
+.odo-strip span { height: 1em; display: flex; align-items: center; justify-content: center; }
+.stat-label { font-family: var(--mono); font-size: 12px; color: var(--ink-dim); letter-spacing: 0.15em; margin-top: 16px; text-transform: uppercase; font-weight: 500; }
+
+@media(max-width: 900px) { 
+  .h-scroll-layout { gap: 40px; }
+  .h-card { width: 320px; height: 480px; }
+  .h-scroll-track { margin-left: -160px; } /* Half of 320px */
+  .h-card-body { padding: 32px; }
+  .authority-grid { grid-template-columns: 1fr; gap: 60px; } 
+  .stat-grid { border-left: none; padding-left: 0; }
+}
+</style>
+<div class="marquee"><div class="marquee-track">
+<span>Porsche</span><span>BMW</span><span>Audi</span><span>Mercedes-Benz</span><span>Range Rover</span><span>Jaguar</span><span>Volvo</span><span>MINI</span><span>Mahindra</span>
+<span>Porsche</span><span>BMW</span><span>Audi</span><span>Mercedes-Benz</span><span>Range Rover</span><span>Jaguar</span><span>Volvo</span><span>MINI</span><span>Mahindra</span>
+</div></div>
+
+<section id="authority" class="pad">
+<div class="container authority-grid cinema-drop">
+<div class="authority-left">
+<div class="eyebrow">Studio Infrastructure</div>
+<h2>Built to run at volume, engineered for <span style="color:var(--ink-faint);">perfection.</span></h2>
+</div>
+<div class="stat-grid">
+<div class="stat"><div class="stat-num"><span class="odo" data-count="4200"></span><span style="font-size: 0.4em; margin-bottom: 8px;">+</span></div><div class="stat-label">Vehicles Serviced</div></div>
+<div class="stat"><div class="stat-num"><span class="odo" data-count="28"></span><span style="font-size: 0.4em; margin-bottom: 8px;">k</span></div><div class="stat-label">Sq.Ft Facility</div></div>
+<div class="stat"><div class="stat-num"><span class="odo" data-count="12"></span></div><div class="stat-label">Install Bays</div></div>
+<div class="stat"><div class="stat-num"><span class="odo" data-count="11"></span></div><div class="stat-label">Years Active</div></div>
+</div>
+</div>
+</section>
+
+<!-- 1. WHAT WE DO (Premium Horizontal Gallery) -->
+<section id="services" class="h-scroll-section">
+<div class="h-scroll-layout">
+<div class="section-head h-scroll-header cinema-drop">
+<div class="eyebrow">What We Do</div>
+<h2>One studio. Every layer.</h2>
+<p>From wraps to optically clear film—each service is engineered to work together under one roof.</p>
+</div>
+<div class="h-scroll-viewport" id="servicesViewport">
+<div class="h-scroll-track cinema-drop" id="servicesTrack">
+
+<div class="h-card">
+  <div class="h-card-media" id="media-service_1"><img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=800&auto=format&fit=crop" alt="Modifications"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">01</div>
+    <h4>Modifications <div class="h-card-arrow">→</div></h4>
+    <p>Wraps, alloy wheels, lighting upgrades, and custom interior builds.</p>
+  </div>
+</div>
+
+<div class="h-card">
+  <div class="h-card-media" id="media-service_2"><img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=800&auto=format&fit=crop" alt="PPF"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">02</div>
+    <h4>Protection Film <div class="h-card-arrow">→</div></h4>
+    <p>Self-healing, optically clear defense against stone chips and abrasions.</p>
+  </div>
+</div>
+
+<div class="h-card">
+  <div class="h-card-media" id="media-service_3"><img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=800&auto=format&fit=crop" alt="Ceramic"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">03</div>
+    <h4>Ceramic Coating <div class="h-card-arrow">→</div></h4>
+    <p>Chemical-resistant, deep gloss layer that locks in true paint depth.</p>
+  </div>
+</div>
+
+<div class="h-card">
+  <div class="h-card-media" id="media-service_4"><img src="https://images.unsplash.com/photo-1600705722908-bab1e6191f63?q=80&w=800&auto=format&fit=crop" alt="Detailing"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">04</div>
+    <h4>Detailing <div class="h-card-arrow">→</div></h4>
+    <p>Multi-stage machine correction that restores and perfects factory clarity.</p>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- 2. PROCESS / HOW IT'S BUILT -->
+<section id="process" class="h-scroll-section">
+<div class="h-scroll-layout">
+<div class="section-head h-scroll-header cinema-drop">
+<div class="eyebrow">The Process</div>
+<h2>Craftsmanship, made visible.</h2>
+<p>Swipe through our meticulous 4-step studio pipeline.</p>
+</div>
+<div class="h-scroll-viewport" id="processViewport">
+<div class="h-scroll-track cinema-drop" id="processTrack">
+
+<div class="h-card">
+  <div class="h-card-media" id="media-process_1"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">Phase 1</div>
+    <h4>Inspection <div class="h-card-arrow">→</div></h4>
+    <p>Full condition assessment, paint depth mapping, and precision prep strategy.</p>
+  </div>
+</div>
+
+<div class="h-card">
+  <div class="h-card-media" id="media-process_2"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">Phase 2</div>
+    <h4>Decontamination <div class="h-card-arrow">→</div></h4>
+    <p>Chemical and mechanical correction to completely strip oxidation and swirls.</p>
+  </div>
+</div>
+
+<div class="h-card">
+  <div class="h-card-media" id="media-process_3"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">Phase 3</div>
+    <h4>Installation <div class="h-card-arrow">→</div></h4>
+    <p>Wet fitment in our climate-controlled bay. Wrapped and tucked invisible edges.</p>
+  </div>
+</div>
+
+<div class="h-card">
+  <div class="h-card-media" id="media-process_4"></div>
+  <div class="h-card-scrim"></div>
+  <div class="h-card-body">
+    <div class="h-card-tag">Phase 4</div>
+    <h4>Delivery <div class="h-card-arrow">→</div></h4>
+    <p>Rigorous panel-by-panel review under specialized studio lighting prior to handover.</p>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<style>
+/* ============================================================
+   BOTTOM HALF OVERHAUL (Compare, Reviews, Form, Footer)
+   ============================================================ */
+/* Compare Slider */
+#compare { background: var(--void); border-bottom: 1px solid var(--line); }
+.compare-frame { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); user-select: none; background: var(--void); touch-action: pan-y; }
+.compare-layer { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; pointer-events: none; filter: grayscale(100%); }
+.compare-after { background-color: #111; filter: grayscale(0%); } 
+.compare-before { background-color: #222; clip-path: inset(0 50% 0 0); width: 100%; }
+.compare-label { position: absolute; top: 32px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; padding: 10px 20px; background: rgba(5,5,5,0.6); color: var(--ink); border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; text-transform: uppercase; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 5; pointer-events: none; }
+.compare-label.l-before { left: 32px; } .compare-label.l-after { right: 32px; }
+.compare-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--ink); transform: translateX(-50%); z-index: 10; cursor: ew-resize; pointer-events: auto; }
+.compare-handle .grip { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 48px; height: 64px; border-radius: 100px; background: var(--ink); display: flex; align-items: center; justify-content: center; pointer-events: none; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+.compare-handle .grip::before, .compare-handle .grip::after { content: ""; width: 2px; height: 20px; background: var(--void); border-radius: 2px; margin: 0 2px; }
+@media(max-width: 900px) { .compare-frame { aspect-ratio: 4/5; } .compare-label { top: 16px; font-size: 10px; padding: 6px 12px; } .compare-label.l-before { left: 16px; } .compare-label.l-after { right: 16px; } }
+
+/* Deep Dark Premium Reviews */
+#testimonials { background: var(--void); border-bottom: 1px solid var(--line); }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 64px; }
+.testi-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 48px; display: flex; flex-direction: column; gap: 24px; transition: all 0.4s cubic-bezier(0.16,1,.3,1); }
+.testi-card:hover { transform: translateY(-8px); border-color: var(--line-strong); background: var(--surface-raised); box-shadow: 0 24px 64px rgba(0,0,0,0.4); }
+.testi-card .stars { display: flex; gap: 4px; color: var(--accent); }
+.testi-card .stars svg { width: 16px; height: 16px; fill: currentColor; }
+.testi-card p.quote { font-family: var(--body); font-weight: 300; font-size: 16px; line-height: 1.6; color: var(--ink-dim); flex: 1; }
+.testi-card .author { margin-top: auto; border-top: 1px solid var(--line); padding-top: 24px; }
+.testi-card .author h5 { font-size: 18px; color: var(--ink); margin-bottom: 4px; font-family: var(--display); font-weight: 600;}
+.testi-card .author span { font-size: 12px; color: var(--ink-faint); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em;}
+
+/* Ultra-Clean Booking Form */
+#booking { background: var(--surface); border-top: 1px solid var(--line); }
+.booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+.field { margin-bottom: 32px; position: relative; }
+.field input, .field select, .field textarea { width: 100%; background: var(--void); border: 1px solid var(--line); border-radius: 12px; padding: 24px 20px 12px; color: var(--ink); font-family: var(--body); font-size: 16px; transition: all 0.3s; }
+.field textarea { resize: vertical; min-height: 120px; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--ink-faint); background: var(--surface-raised); }
+.field label { position: absolute; top: 18px; left: 20px; color: var(--ink-faint); font-size: 16px; pointer-events: none; transition: all 0.3s cubic-bezier(0.16,1,.3,1); }
+.field input:focus + label, .field input:not(:placeholder-shown) + label, .field select:focus + label, .field select.filled + label, .field textarea:focus + label, .field textarea:not(:placeholder-shown) + label { transform: translateY(-10px); font-size: 11px; color: var(--ink-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em;}
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media(max-width: 900px) { .booking-grid { grid-template-columns: 1fr; gap: 60px; } .field-row { grid-template-columns: 1fr; gap: 0; } }
+
+/* Massive Architectural Footer */
+footer { background: var(--void); border-top: 1px solid var(--line); padding: 120px 0 40px; }
+.foot-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 60px; padding-bottom: 80px; border-bottom: 1px solid var(--line); }
+.foot-word { font-family: var(--display); font-size: 11vw; font-weight: 800; letter-spacing: -0.04em; line-height: 0.85; color: var(--ink); margin-left: -5px; }
+.foot-cols { display: flex; gap: 100px; flex-wrap: wrap; margin-top: 20px; }
+.foot-col h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; }
+.foot-col a, .foot-col p { display: block; font-size: 15px; font-family: var(--body); font-weight: 400; color: var(--ink-dim); margin-bottom: 16px; transition: color 0.3s; }
+.foot-col a:hover { color: var(--ink); }
+.foot-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 40px; flex-wrap: wrap; gap: 16px; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+</style>
+
+<!-- RECENT BUILDS -->
+<section id="builds" class="h-scroll-section">
+<div class="h-scroll-layout">
+<div class="section-head h-scroll-header cinema-drop">
+<div class="eyebrow">Studio Log</div>
+<h2>Proof, not promises.</h2>
+<p>A running log of what's left the studio.</p>
+</div>
+<div class="h-scroll-viewport" id="buildsViewport">
+<div class="h-scroll-track cinema-drop" id="buildsTrack">
+<div class="h-card build-end" style="justify-content: center; align-items: center; text-align: center; border-style: dashed; background: transparent;">
+<div class="eyebrow accent" style="margin-bottom: 16px; justify-content:center; width: 100%;">Yours next?</div>
+<p style="margin-bottom: 32px;">Want your build featured in this gallery?</p>
+<a href="#booking" class="btn btn-liquid magnetic">
+  <span class="goo-layer"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></span>
+  <span class="txt">Book a Build <span class="arrow hidden">→</span></span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare" class="pad">
+<div class="container cinema-drop">
+<div class="section-head" style="text-align:center; margin:0 auto 64px auto;">
+<div class="eyebrow" style="justify-content:center; margin-bottom: 16px;">See the difference</div>
+<h2>Drag to reveal the result.</h2>
+</div>
+<div class="compare-frame" id="compareFrame">
+<div class="compare-layer compare-after" id="media-after_img"></div>
+<div class="compare-layer compare-before" id="media-before_img"></div>
+<div class="compare-label l-before">Before</div>
+<div class="compare-label l-after">After Rev Nation</div>
+<div class="compare-handle" id="compareHandle"><div class="grip"></div></div>
+</div>
+</div>
+</section>
+
+<!-- DARK REVIEWS -->
+<section id="testimonials" class="pad">
+<div class="container cinema-drop">
+<div class="section-head" style="margin: 0 auto; text-align: center;">
+<div class="eyebrow" style="justify-content: center; margin-bottom: 16px;">In their words</div>
+<h2>Unmatched quality.</h2>
+</div>
+<div class="testi-grid" id="testiGrid"></div>
+</div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="booking" class="pad">
+<div class="container booking-grid">
+<div class="cinema-drop">
+<div class="eyebrow">Initiate Project</div>
+<h2>Secure a bay.</h2>
+<p>Tell us about your vehicle. Our team responds within one business day with availability and a technical plan.</p>
+</div>
+<div class="booking-form-wrap cinema-drop">
+<form id="bookingForm">
+<div class="field-row">
+<div class="field"><input type="text" name="name" placeholder=" " required><label>Full name</label></div>
+<div class="field"><input type="tel" name="phone" placeholder=" " required><label>Phone number</label></div>
+</div>
+<div class="field-row">
+<div class="field"><input type="text" name="city" placeholder=" " required><label>City</label></div>
+<div class="field"><input type="text" name="car" placeholder=" " required><label>Vehicle make &amp; model</label></div>
+</div>
+<div class="field">
+<select required id="serviceSelect" name="service"><option value="" disabled selected hidden></option><option>Custom Modifications</option><option>Paint Protection Film</option><option>Ceramic Coating</option><option>Detailing</option><option>Not sure yet</option></select>
+<label class="filled">Service required</label>
+</div>
+<div class="field"><textarea name="message" placeholder=" "></textarea><label>Message (optional)</label></div>
+<!-- Honeypot for bots only — never visible to real users -->
+<div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+  <label>Leave this field empty<input type="text" name="website_url" tabindex="-1" autocomplete="off"></label>
+</div>
+<!-- Cloudflare Turnstile security check -->
+<div style="margin-bottom:20px;display:flex;justify-content:center;">
+  <div id="bookingCaptcha"></div>
+</div>
+<button type="submit" class="btn btn-liquid magnetic" style="width: 100%;" id="bookingSubmitBtn" disabled>
+  <span class="goo-layer"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></span>
+  <span class="txt">Submit Request <span class="arrow hidden">→</span></span>
+</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+
+<!-- MASSIVE FOOTER -->
+<footer id="siteFooter">
+<div class="container cinema-drop">
+<div class="foot-top">
+<div class="foot-word">REV NATION</div>
+<div class="foot-cols">
+<div class="foot-col"><h5>Studio</h5><p>Vaishali Nagar, Jaipur</p></div>
+<div class="foot-col"><h5>Contact</h5><a href="tel:+917300049430">+91 73000 49430</a></div>
+<div class="foot-col"><h5>Links</h5><a href="#services">What We Do</a><a href="#process">Process</a><a href="#builds">Builds</a></div>
+</div>
+</div>
+<div class="foot-bottom">
+<p>© 2026 Rev Nation Jaipur. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<!-- ============================================================
+     THE UNCOMPROMISED JAVASCRIPT ENGINE
+     ============================================================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<script src="config.js"></script>
+
+<script>
+var db = null;
+try {
+  if(window.REV_NATION_CONFIG && window.REV_NATION_CONFIG.SUPABASE_URL.indexOf('YOUR_') === -1) {
+    db = window.supabase.createClient(window.REV_NATION_CONFIG.SUPABASE_URL, window.REV_NATION_CONFIG.SUPABASE_ANON_KEY);
+  }
+} catch(e) {}
+
+async function submitLead(payload) {
+  if(!db) return;
+  try { await db.from('leads').insert([payload]); } catch(e) {}
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isMobile = window.innerWidth <= 900;
+  if(window.gsap && window.ScrollTrigger) { gsap.registerPlugin(ScrollTrigger); }
+
+  /* 1. DIGITAL SPLIT-SCREEN PRELOADER */
+  var pctEl = document.getElementById('plPct');
+  var barEl = document.getElementById('plBar');
+  var preloader = document.getElementById('preloader');
+  
+  function updatePreloader(progress) {
+    if(progress > 100) progress = 100;
+    if(pctEl) pctEl.textContent = Math.floor(progress);
+    if(barEl) barEl.style.width = progress + '%';
+    
+    if(progress >= 100) {
+      setTimeout(() => {
+        if(preloader) preloader.classList.add('done');
+        var hero = document.getElementById('hero');
+        if(hero) hero.classList.add('revealed');
+      }, 500); 
+    }
+  }
+  let fakeProgress = 0;
+  let plInterval = setInterval(() => {
+    fakeProgress += Math.random() * 12;
+    if(fakeProgress >= 95) clearInterval(plInterval);
+    else updatePreloader(fakeProgress);
+  }, 120);
+
+  /* 2. TRUE CINEMATIC TAKEOVER (WITH SCROLL-LOCK CHECK) */
+  let idleDelay = isMobile ? 5000 : 3000;
+  let idleTimer;
+  function resetIdle() {
+    document.body.classList.remove('ui-minimized');
+    clearTimeout(idleTimer);
+    
+    // SCROLL CHECK: Only vanish the UI if the user is at the very top of the page.
+    if (window.scrollY < 100) {
+      idleTimer = setTimeout(() => { 
+        if (window.scrollY < 100) { // Double check before applying
+          document.body.classList.add('ui-minimized'); 
+        }
+      }, idleDelay);
+    }
+  }
+  window.addEventListener('mousemove', resetIdle);
+  window.addEventListener('scroll', resetIdle, {passive: true});
+  window.addEventListener('touchstart', resetIdle, {passive: true});
+  resetIdle(); 
+
+  /* 3. FINELY TUNED ANIMATION RICH VIEWPORT FADES */
+  if(window.gsap && window.ScrollTrigger && !reduceMotion) {
+    gsap.utils.toArray('.cinema-drop').forEach(elem => {
+      gsap.to(elem, {
+        y: 0, opacity: 1, duration: 1.4, ease: "expo.out",
+        scrollTrigger: { trigger: elem, start: "top 88%", toggleActions: "play none none reverse" }
+      });
+    });
+  }
+
+  /* 4. LENIS SMOOTH SCROLL ENGINE (Desktop Only) */
+  if(window.Lenis && !reduceMotion && !isMobile) {
+    var lenis = new Lenis({ anchors: true, lerp: 0.08 });
+    lenis.on('scroll', function() { if(window.ScrollTrigger) ScrollTrigger.update(); });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  /* 5. MAGNETIC BUTTON ELEMENTS (Desktop Only) */
+  if(!reduceMotion && !isMobile) {
+    document.querySelectorAll('.magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width/2;
+        var y = e.clientY - r.top - r.height/2;
+        gsap.to(btn, {x: x * 0.4, y: y * 0.4, duration: 0.15, ease: 'power2.out'});
+      });
+      btn.addEventListener('mouseleave', function(){
+        gsap.to(btn, {x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)'});
+      });
+    });
+  }
+
+  /* 6. MOBILE HAMBURGER -> ARROW MENU INTERACTION */
+  var menuTrigger = document.getElementById('menuTrigger'); 
+  var drawer = document.getElementById('mobile-drawer');
+  if(menuTrigger && drawer) {
+    menuTrigger.addEventListener('click', function() {
+      var open = drawer.classList.toggle('open');
+      menuTrigger.classList.toggle('open', open);
+      document.body.classList.toggle('menu-open', open);
+    });
+    drawer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', function() { 
+        drawer.classList.remove('open');
+        menuTrigger.classList.remove('open');
+        document.body.classList.remove('menu-open'); 
+      });
+    });
+  }
+
+  /* 7. HIGH-END CENTER-PINNED HORIZONTAL SCROLL MATRIX */
+  function initHorizontalScroller(trackId, viewportId) {
+    var track = document.getElementById(trackId);
+    var viewport = document.getElementById(viewportId);
+    if(track && viewport && !isMobile && !reduceMotion) {
+      requestAnimationFrame(function() {
+        var cards = track.querySelectorAll('.h-card');
+        if (cards.length > 1) {
+          gsap.set(track, { x: 0 }); 
+          var firstCardBounds = cards[0].getBoundingClientRect();
+          var lastCardBounds = cards[cards.length - 1].getBoundingClientRect();
+          var travelDistance = lastCardBounds.left - firstCardBounds.left;
+          
+          gsap.to(track, {
+            x: -travelDistance, ease: 'none',
+            scrollTrigger: {
+              trigger: track.parentElement.parentElement,
+              start: 'top top', end: '+=' + (travelDistance + 400),
+              scrub: 1, pin: true, invalidateOnRefresh: true
+            }
+          });
+        }
+      });
+    }
+  }
+  
+  initHorizontalScroller('servicesTrack', 'servicesViewport');
+  initHorizontalScroller('processTrack', 'processViewport');
+  initHorizontalScroller('buildsTrack', 'buildsViewport');
+
+  /* 8. BEFORE/AFTER SLIDER INTERACTION ENGINE */
+  var compareFrame = document.getElementById('compareFrame');
+  var clip = document.getElementById('media-before_img');
+  var handle = document.getElementById('compareHandle');
+  var dragging = false;
+  function setSplit(pct) {
+    pct = Math.max(0, Math.min(100, pct));
+    if(clip) clip.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    if(handle) handle.style.left = pct + '%';
+  }
+  function posFromEvent(e) {
+    if(!compareFrame) return 50;
+    var rect = compareFrame.getBoundingClientRect();
+    var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return (x / rect.width) * 100;
+  }
+  if(handle && compareFrame) {
+    compareFrame.addEventListener('mousedown', () => dragging = true);
+    window.addEventListener('mouseup', () => dragging = false);
+    window.addEventListener('mousemove', e => { if(dragging) setSplit(posFromEvent(e)); });
+    
+    compareFrame.addEventListener('touchstart', () => dragging = true, {passive: true});
+    window.addEventListener('touchend', () => dragging = false);
+    window.addEventListener('touchmove', e => { if(dragging) setSplit(posFromEvent(e)); }, {passive: true});
+  }
+
+  /* 9. DATABASE PRELOAD & DYNAMIC PORTFOLIO LAYERING */
+  async function preloadSiteData() {
+    if(db) {
+      try {
+        var { data: media } = await db.from('site_media').select('*');
+        if(media) {
+          media.forEach(m => {
+            if(m.id === 'hero_video') {
+              let vid = document.getElementById('heroVideo');
+              if(vid) vid.src = m.media_url;
+            } else if(m.id === 'before_img' || m.id === 'after_img') {
+              let el = document.getElementById('media-' + m.id);
+              if(el) el.style.backgroundImage = 'url(' + m.media_url + ')';
+            } else if(m.id.startsWith('service_') || m.id.startsWith('process_')) {
+              let panel = document.getElementById('media-' + m.id);
+              if(panel) {
+                if(m.media_url.match(/\.(mp4|webm)$/i)) {
+                  panel.innerHTML = '<video autoplay muted loop playsinline src="' + m.media_url + '"></video>';
+                } else {
+                  panel.innerHTML = '<img src="' + m.media_url + '">';
+                }
+              }
+            }
+          });
+        }
+      } catch(e) {}
+      
+      try {
+        var { data: stats } = await db.from('stats').select('*').order('sort_order');
+        if(stats) {
+          var nodes = document.querySelectorAll('.stat');
+          stats.forEach((s, i) => {
+            if(!nodes[i]) return;
+            var odo = nodes[i].querySelector('.odo');
+            if(odo) odo.setAttribute('data-count', String(s.value));
+            var suf = nodes[i].querySelector('.suffix');
+            if(suf) suf.textContent = s.suffix || "";
+            var lbl = nodes[i].querySelector('.stat-label');
+            if(lbl) lbl.textContent = s.label;
+          });
+        }
+      } catch(e) {}
+      
+      try {
+        var { data: projects } = await db.from('projects').select('*').eq('published', true).order('sort_order');
+        if(projects && projects.length) {
+          var track = document.getElementById('buildsTrack');
+          if(track) {
+            var endCard = track.querySelector('.build-end');
+            track.querySelectorAll('.build-card:not(.build-end)').forEach(c => c.remove());
+            projects.forEach(p => {
+              var card = document.createElement('div'); card.className = 'h-card';
+              card.innerHTML = '<div class="h-card-media">' + (p.cover_image ? '<img src="' + p.cover_image + '">' : "") + '</div>' +
+                '<div class="h-card-scrim"></div><div class="h-card-body"><div class="h-card-tag">' + (p.service_type || '') + '</div>' +
+                '<h4>' + p.title + '<div class="h-card-arrow">→</div></h4><p>' + [p.car_make, p.car_model].filter(Boolean).join(' ') + '</p></div>';
+              track.insertBefore(card, endCard);
+            });
+            initHorizontalScroller('buildsTrack', 'buildsViewport');
+          }
+        }
+      } catch(e) {}
+      renderTestiGrid();
+    }
+    clearInterval(plInterval);
+    updatePreloader(100);
+  }
+  
+  if(db) preloadSiteData(); else { clearInterval(plInterval); updatePreloader(100); }
+
+  /* 10. REAL-TIME DATA COUNTER ODOMETERS */
+  function buildOdometer(el) {
+    var target = el.getAttribute('data-count');
+    if(!target) return [];
+    el.innerHTML = '';
+    var cols = [];
+    target.split('').forEach(d => {
+      var col = document.createElement('span'); col.className = 'odo-digit';
+      var strip = document.createElement('span'); strip.className = 'odo-strip';
+      for(var n = 0; n < 10; n++) { var s = document.createElement('span'); s.textContent = n; strip.appendChild(s); }
+      col.appendChild(strip); el.appendChild(col);
+      cols.push({ strip: strip, digit: parseInt(d, 10) });
+    });
+    return cols;
+  }
+  var counted = false;
+  var authSec = document.getElementById('authority');
+  var clo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting && !counted) {
+        counted = true;
+        var odoEls = document.querySelectorAll('.odo');
+        var odoData = Array.from(odoEls).map(el => buildOdometer(el));
+        odoData.forEach(cols => cols.forEach((c, i) => gsap.to(c.strip, {yPercent: -(c.digit*10), duration: 1.6 + i*0.12, ease: 'power4.out', delay: i*0.05})));
+      }
+    });
+  }, {threshold: 0.3});
+  if(authSec) clo.observe(authSec);
+
+  /* 11. PREMIUM TESTIMONIAL ENGINE COUPLING */
+  var testiGrid = document.getElementById('testiGrid');
+  var testimonials = [
+    {q: "The wrap and wheel swap turned heads. Cleanest install in Jaipur.", name: 'Aditya R.', sub: 'Thar Wrap'},
+    {q: "Edge work is cleaner than the factory finish.", name: 'Meher K.', sub: 'Audi Q8 PPF'},
+    {q: "Two years in Rajasthan heat, and the coating still beads water like day one.", name: 'Karan V.', sub: 'Mercedes GLE'},
+    {q: "Smooth integration that exceeded expectations. The results speak for themselves.", name: 'Priya M.', sub: 'Porsche 911'}
+  ];
+  
+  async function renderTestiGrid() {
+    if(db) {
+      try {
+        var { data: testi } = await db.from('testimonials').select('*').eq('published', true).order('sort_order');
+        if(testi && testi.length) { testimonials = testi.map(t => ({ q: '"' + t.quote + '"', name: t.name, sub: [t.car, t.city].filter(Boolean).join(' ') })); }
+      } catch(e) {}
+    }
+    if(testiGrid) {
+      var svgStar = '<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+      testiGrid.innerHTML = testimonials.map((t, i) =>
+        '<div class="testi-card cinema-drop">' +
+        '<div class="stars">' + svgStar + svgStar + svgStar + svgStar + svgStar + '</div>' +
+        '<p class="quote">' + t.q + '</p>' +
+        '<div class="author"><h5>' + t.name + '</h5><span>' + t.sub + '</span></div></div>'
+      ).join('');
+      
+      if(window.gsap && window.ScrollTrigger && !reduceMotion) {
+        gsap.utils.toArray('#testiGrid .cinema-drop').forEach(elem => {
+          gsap.to(elem, {
+            y: 0, opacity: 1, duration: 1.2, ease: "expo.out",
+            scrollTrigger: { trigger: elem, start: "top 85%", toggleActions: "play none none reverse" }
+          });
+        });
+      }
+    }
+  }
+
+  /* 12. SECURE LEAD DISPATCH (honeypot + Turnstile) */
+  var bookingForm = document.getElementById('bookingForm');
+  var bookingBtn = document.getElementById('bookingSubmitBtn');
+  var bookingToken = null;
+  var turnstileBookingWidgetId = null;
+
+  /* Mount Cloudflare Turnstile on the booking form */
+  (function mountBookingCaptcha(){
+    var siteKey = window.REV_NATION_CONFIG && window.REV_NATION_CONFIG.TURNSTILE_SITE_KEY;
+    var box = document.getElementById('bookingCaptcha');
+    if (!siteKey || siteKey === 'YOUR_TURNSTILE_SITE_KEY' || !box) return;
+    function tryRender(){
+      if (typeof turnstile !== 'undefined' && turnstileBookingWidgetId === null) {
+        turnstileBookingWidgetId = turnstile.render(box, {
+          sitekey: siteKey,
+          theme: 'dark',
+          size: 'normal',
+          callback: function(token){ bookingToken = token; if(bookingBtn){ bookingBtn.disabled = false; } },
+          'expired-callback': function(){ bookingToken = null; if(bookingBtn){ bookingBtn.disabled = true; } },
+          'error-callback': function(){ bookingToken = null; if(bookingBtn){ bookingBtn.disabled = true; } }
+        });
+      } else {
+        setTimeout(tryRender, 120);
+      }
+    }
+    tryRender();
+  })();
+
+  if(bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      /* 1. Honeypot check — real users never see this field; bots always fill it */
+      var hp = bookingForm.querySelector('input[name="website_url"]');
+      if (hp && hp.value.trim() !== '') {
+        console.warn('Spam submission blocked (honeypot).');
+        return;
+      }
+
+      /* 2. CAPTCHA check */
+      var siteKey = window.REV_NATION_CONFIG && window.REV_NATION_CONFIG.TURNSTILE_SITE_KEY;
+      if (siteKey && siteKey !== 'YOUR_TURNSTILE_SITE_KEY' && !bookingToken) {
+        alert('Please complete the security check.');
+        return;
+      }
+
+      /* 3. All good — submit */
+      var fd = new FormData(this);
+      submitLead({ name: fd.get('name'), phone: fd.get('phone'), city: fd.get('city'), car: fd.get('car'), service: fd.get('service'), message: fd.get('message') || null });
+      alert("Request Sent Successfully. We will contact you shortly.");
+      bookingForm.reset();
+      if (typeof turnstile !== 'undefined' && turnstileBookingWidgetId !== null) {
+        try { turnstile.reset(turnstileBookingWidgetId); bookingToken = null; if (bookingBtn) bookingBtn.disabled = true; } catch(err){}
+      }
+    });
+  }
+  
+});
+</script>
+</body>
+</html>
